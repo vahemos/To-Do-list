@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
+import { Container } from "./container.js/container"
+import { Header } from "./header/header"
+import { useState } from "react"
 
-function App() {
-  return (
+
+const App = () => {
+  const [boardNumbers, setBoardNumbers] = useState([])
+
+  function createNewBoard() {
+    setBoardNumbers([...boardNumbers, boardNumbers.length + 1])
+  }
+  return (<div>
+        <button onClick={createNewBoard}>New Board</button>
+      
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      
+
+      {boardNumbers.map((number) => (
+        <div key={number}>
+          <Header />
+          <Container />
+        </div>
+      ))}
+    </div></div>
+  )
 }
 
-export default App;
+export { App }
