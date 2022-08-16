@@ -1,39 +1,54 @@
-import { ListItesmStyle } from "./containerStyled"
+import { StaticInput, ListItemInput, List } from "./containerStyled"
 import { useState } from "react"
-import { ListItem } from "../listItem"
 
 const Container = () => {
-  const [listItemArray, setListItemArray] = useState([])
+  const [listItem, setListItem] = useState([])
 
-  const keyPress = (e) => {
+  const editItem = (e, index) => {
+    listItem[index] = e.target.value
+    if (e.target.value < 1) {
+      listItem.splice(index, 1)
+    }
+
+    setListItem([...listItem])
+  }
+
+  const blurEfect = (e) => {
     if (e.key === "Enter") {
-      setListItemArray([...listItemArray, e.target.value])
+      e.target.blur()
+    }
+  }
+
+  const addNewItem = (e) => {
+    if (e.target.value.length > 0) {
+      setListItem([...listItem, e.target.value])
       e.target.value = ""
     }
   }
+
   return (
-    <div>
+    <List>
       <ol>
-        {listItemArray.map((inputText, index) => {
+        {listItem.map((inputText, index) => {
           return (
-            <ListItesmStyle key={index}>
-            <ListItem  inputText={inputText}/>
-              <button
-                onClick={() => {
-                  listItemArray.splice(index, 1)
-                  setListItemArray([...listItemArray])
+            <li key={index}>
+              <ListItemInput
+                type="text"
+                onChange={(e) => {
+                  editItem(e, index)
                 }}
-              >
-                &#10008;
-              </button>
-            </ListItesmStyle>
+                onKeyDown={(e) => blurEfect(e)}
+                value={inputText}
+                autoFocus
+              />
+            </li>
           )
         })}
         <li>
-          <input type="text" onKeyDown={keyPress} />
+          <StaticInput onChange={addNewItem}></StaticInput>
         </li>
       </ol>
-    </div>
+    </List>
   )
 }
 

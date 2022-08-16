@@ -1,22 +1,8 @@
 .App {
   text-align: center;
-  margin: 25px auto;
+  margin: 0px auto;
   width: 80%;
-  background-color: beige;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-input  {
-    border: none;
-    background-color: transparent;
-    resize: none;
-    
-}
-li {
-  
+ 
 }
 
-button{
-border: none;
-}

@@ -1,9 +1,13 @@
 import styled from "styled-components"
 
-const ListItesmStyle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  
+const List = styled.div`
+  background: aqua;
+  width: 50%;
 `
+const StaticInput = styled.input`
+  border: hidden;
+  outline: none;
+`
+const ListItemInput = styled(StaticInput)``
 
-export { ListItesmStyle }
+export { StaticInput, ListItemInput, List }

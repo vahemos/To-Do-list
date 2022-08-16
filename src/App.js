@@ -1,28 +1,18 @@
 import "./App.css"
 import { Container } from "./container.js/container"
-import { Header } from "./header/header"
-import { useState } from "react"
-
+import { Header } from "./title/title"
+import { Wrapper } from "./wrapper/wrapper"
 
 const App = () => {
-  const [boardNumbers, setBoardNumbers] = useState([])
-
-  function createNewBoard() {
-    setBoardNumbers([...boardNumbers, boardNumbers.length + 1])
-  }
-  return (<div>
-        <button onClick={createNewBoard}>New Board</button>
-      
-    <div className="App">
-      
-
-      {boardNumbers.map((number) => (
-        <div key={number}>
-          <Header />
-          <Container />
-        </div>
-      ))}
-    </div></div>
+  return (
+    <div>
+      <Header />
+      <Wrapper />
+      <div className="App">
+        <Container />
+        <Container />
+      </div>
+    </div>
   )
 }
 
