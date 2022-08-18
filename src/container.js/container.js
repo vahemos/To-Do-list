@@ -1,6 +1,5 @@
-import { StaticInput, ListItemInput, List } from "./containerStyled"
+import { StaticInput, ListItemInput, List, Banner } from "./containerStyled"
 import { useState } from "react"
-import { Banner } from "./bannerStyled"
 
 const Container = (props) => {
   const [listItem, setListItem] = useState([])
