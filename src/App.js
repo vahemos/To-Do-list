@@ -1,17 +1,16 @@
 import "./App.css"
 import { Container } from "./container.js/container"
 import { Header } from "./title/title"
-import { Wrapper } from "./wrapper/wrapper"
+import { ContainerStyled } from "./container.js/containerStyled"
 
 const App = () => {
   return (
     <div>
       <Header />
-      <Wrapper />
-      <div className="App">
-        <Container />
-        <Container />
-      </div>
+      <ContainerStyled>
+        <Container item="YES" />
+        <Container item="NO" />
+      </ContainerStyled>
     </div>
   )
 }

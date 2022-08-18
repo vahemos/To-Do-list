@@ -1,12 +1,13 @@
 import { StaticInput, ListItemInput, List } from "./containerStyled"
 import { useState } from "react"
+import { Banner } from "./bannerStyled"
 
-const Container = () => {
+const Container = (props) => {
   const [listItem, setListItem] = useState([])
 
   const editItem = (e, index) => {
     listItem[index] = e.target.value
-    if (e.target.value < 1) {
+    if (e.target.value.length === 0) {
       listItem.splice(index, 1)
     }
 
@@ -28,6 +29,7 @@ const Container = () => {
 
   return (
     <List>
+      <Banner>{props.item}</Banner>
       <ol>
         {listItem.map((inputText, index) => {
           return (
